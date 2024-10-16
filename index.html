@@ -85,15 +85,15 @@
         function formatText() {
             const inputText = document.getElementById('inputText').value;
             const sentencesToBold = [
-                "01- informe previo nº:", "02- fecha:", "03- cuartel interviniente:", 
-                "04- tipo de pedido de auxilio:", "05- tipo de intervención:", "06- dirección:",
-                "07- institución pública:", "08- vehiculo de servicio público:", "09- solicitado:",
-                "10- forma de aviso:", "11-hora de aviso:", "12- hora de salida:", "13- hora de arribo:", 
-                "14- hora de regreso:", "15- tiempo de trabajo:", "16- perito de turno:", 
-                "17- móvil concurrente:", "18- chofer:", "19- a cargo:", "20-personal:", 
-                "21- lesionados:", "22- víctimas fatales:", "23- propagación:", "24-causa:", 
-                "25- tareas realizadas:", "panorama de arribo:", "tareas realizadas:", 
-                "afectaciones:", "presentes en el lugar:"
+                "01- Informe Previo Nº:", "02- Fecha:", "03- Cuartel interviniente:", 
+                "04- Tipo de pedido de auxilio:", "05- Tipo de intervención:", "06- Dirección:",
+                "07- Institución pública:", "08- Vehiculo de servicio público:", "09- Solicitado:",
+                "10- Forma de aviso:", "11-Hora de aviso:", "12- Hora de Salida:", "13- Hora de arribo:", 
+                "14- Hora de regreso:", "15- Tiempo de trabajo:", "16- Perito de turno:", 
+                "17- Móvil concurrente:", "18- Chofer:", "19- A cargo:", "20-Personal:", 
+                "21- Lesionados:", "22- Víctimas fatales:", "23- Propagación:", "24-Causa:", 
+                "25- Tareas Realizadas:", "Panorama de arribo:", "Tareas Realizadas:", 
+                "Afectaciones:", "Presentes en el lugar:"
             ];
             const formattedText = inputText.split('\n').map(line => {
                 let formattedLine = line.trim();
