@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomberos Zapadores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .column {
+            flex: 0 0 35%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: red;
+            text-align: center;
+        }
+        textarea, .output {
+            width: 100%;
+            height: 60vh;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .output {
+            background: #f9f9f9;
+            white-space: pre-wrap;
+            overflow-y: scroll;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #f4f4f4;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bomberos Zapadores</h1>
+    <div class="container">
+        <div class="column">
+            <textarea id="inputText" placeholder="Pega tu texto aquí..."></textarea>
+            <button onclick="formatText()">Formatar Texto</button>
+        </div>
+        <div class="column">
+            <div class="output" id="outputText"></div>
+            <button onclick="copyText()">Copiar Texto</button>
+        </div>
+    </div>
+    <footer>
+        Elaborado por <a href="https://cristian-fontanini.vercel.app/" target="_blank">Cristian Fontanini</a>
+    </footer>
+    <script>
+        function formatText() {
+            const inputText = document.getElementById('inputText').value;
+            const sentencesToBold = [
+                "01- Informe Previo Nº:", "02- Fecha:", "03- Cuartel interviniente:", 
+                "04- Tipo de pedido de auxilio:", "05- Tipo de intervención:", "06- Dirección:",
+                "07- Institución pública:", "08- Vehiculo de servicio público:", "09- Solicitado:",
+                "10- Forma de aviso:", "11-Hora de aviso:", "12- Hora de Salida:", "13- Hora de arribo:", 
+                "14- Hora de regreso:", "15- Tiempo de trabajo:", "16- Perito de turno:", 
+                "17- Móvil concurrente:", "18- Chofer:", "19- A cargo:", "20-Personal:", 
+                "21- Lesionados:", "22- Víctimas fatales:", "23- Propagación:", "24-Causa:", 
+                "25- Tareas Realizadas:", "Panorama de arribo:", "Tareas Realizadas:", 
+                "Afectaciones:", "Presentes en el lugar:"
+            ];
+            const formattedText = inputText.split('\n').map(line => {
+                sentencesToBold.forEach(sentence => {
+                    if (line.includes(sentence)) {
+                        line = line.replace(sentence, `*${sentence}*`);
+                    }
+                });
+                return line;
+            }).join('\n');
+            document.getElementById('outputText').innerText = formattedText;
+        }
+
+        function copyText() {
+            const outputText = document.getElementById('outputText').innerText;
+            navigator.clipboard.writeText(outputText).then(() => {
+                alert('Texto copiado al portapapeles');
+            }, (err) => {
+                alert('Error al copiar texto: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
